@@ -33,7 +33,7 @@ module RedmineIssue
       CONFIG[key] = value
     end
 
-    FileUtils.mkdir_p(Dir.dirname(CONFIG_PATH))
+    FileUtils.mkdir_p(File.dirname(CONFIG_PATH))
     new_config = JSON.pretty_generate(CONFIG)
     File.write(File.expand_path(CONFIG_PATH), new_config)
   end

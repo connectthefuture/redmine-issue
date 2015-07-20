@@ -7,10 +7,11 @@ Command line application that allows to manage issues in redmine easily. Optimiz
 Installation
 ------------
 
+```
 gem install redmine-issue
 redmine-issue set-config secret [YOUR API KEY AT http://HOST/my/account]
 redmine-issue set-config address "http://HOST"
-
+```
 
 Commands
 --------
@@ -18,9 +19,11 @@ Commands
 
 ### list
 
-  List issues; arguments is API get params: http://www.redmine.org/projects/redmine/wiki/Rest_Issues;
-  Example: --project-id 10 --status-id closed; default arguments: --assigned-to-id me --status-id open
-    --sort "priority:desc,project"
+List issues; arguments is API get params: http://www.redmine.org/projects/redmine/wiki/Rest_Issues;
+
+Example: --project-id 10 --status-id closed;
+
+Default arguments: --assigned-to-id me --status-id open --sort "priority:desc,project"
 
 
 ### description [id]
@@ -28,12 +31,12 @@ Commands
 Get issue description and comments.
 
 
-### reply [id] -m message
+### reply [id] -m [message]
 
 Reply to issue; adds comment, sets status "Feedback" and returns issue to responsible user
 
 
-### start id
+### start [id]
 
 Starts issue specified by id; starts tracking current issue and spent time and set issue status "In progress"
 
@@ -64,13 +67,25 @@ save spent time.
 Same as complete but set status "Closed"; you have to have permission to close issues to tun this command.
 
 
-### config key
+### config [key]
 
 Displays config value.
 
 
-### set-config key value
+### set-config [key] [value]
 
 Sets config value.
 
+
+Aliases
+-------
+
+It is too tricky to type "redmine-issue start" or "redmine-issue list" each time, so I suggest you to put following
+aliases to your .zshrc or .bashrc:
+
+* alias il="redmine-issue list"
+* alias is="redmine-issue start"
+* alias ic="redmine-issue complete"
+* alias ip="redmine-issue pause"
+* alias id="redmine-issue description"
 
