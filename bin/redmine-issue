@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'redmine_issue'
+
+verbose = false
+begin
+  args = ARGV.clone()
+  verbose = !args.delete('--verbose').nil?()
+  result =
+    RedmineIssue.
+    method(RedmineIssue._get_arguments_key(args[0])).
+    call(*args[1..-1])
+
+  puts(result)
+rescue => error
+  if verbose
+    raise error
+  end
+
+  puts "ERROR: #{error.message} (#{error.class})"
+  exit(1)
+end
