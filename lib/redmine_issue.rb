@@ -13,8 +13,13 @@ module RedmineIssue
   STATUS_FEEDBACK = 4
   STATUS_CLOSED = 5
 
-  CONFIG_PATH = '~/.config/redmine-issue/config'
-  CONFIG = JSON.parse(File.read(File.expand_path(CONFIG_PATH)))
+  CONFIG_PATH = File.expand_path('~/.config/redmine-issue/config')
+  if !File.exist?(CONFIG_PATH)
+    FileUtils.mkdir_p(File.dirname(CONFIG_PATH))
+    File.write(CONFIG_PATH, '{}')
+  end
+
+  CONFIG = JSON.parse(File.read(CONFIG_PATH))
 
   class Undefined; end
 
