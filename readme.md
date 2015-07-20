@@ -13,6 +13,56 @@ redmine-issue set-config secret [YOUR API KEY AT http://HOST/my/account]
 redmine-issue set-config address "http://HOST"
 ```
 
+Workflow
+--------
+
+```
+# shell shortcuts used
+
+~ 冬 il # redmine-issue list
+
++-------+------------+-------------------------+-----------------------------+
+| id    | priority   | subject                 | info                        |
++-------+------------+-------------------------+-----------------------------+
+| #3304 | Noraml     | Task 1                  | Uveliriya                   |
+|       | Feedback   |                         | Leonid Shagabutdinov        |
+|       |            |                         |                             |
+| #3322 | Noraml     | Task 2                  | Uveliriya                   |
+|       | New        |                         | Leonid Shagabutdinov        |
+|       |            |                         |                             |
++-------+------------+-------------------------+-----------------------------+
+
+~ 冬 id 22 # redmine-issue description 3322
+
++-----------------+----------------------------------------------------------+
+| Id              | 3322                                                     |
+| Project         | Uveliriya                                                |
+| Tracker         | Разработка                                               |
+| Status          | New                                                      |
+| Priority        | Noraml                                                   |
+| Author          | Leonid Shagabutdinov                                     |
+| Assigned_to     | Leonid Shagabutdinov                                     |
+| Fixed_version   | 0.2.3                                                    |
+| Subject         | Task 2                                                   |
+|                 | Description                                              |
+| Start_date      | 2015-07-15                                               |
+| Done_ratio      | 0                                                        |
+| Estimated_hours | 1.0                                                      |
+| Spent_hours     | 1.990000069141388                                        |
+| Created_on      | 2015-07-15T07:50:34Z                                     |
+| Updated_on      | 2015-07-17T11:32:10Z                                     |
++-----------------+----------------------------------------------------------+
+
+~ 冬 is 22 # redmine-issue start 3322
+
+true
+
+~ 冬 ic # redmine-issue complete
+
+true
+
+```
+
 Commands
 --------
 
